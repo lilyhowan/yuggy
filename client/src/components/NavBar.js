@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const NavBar = (props) => {
+function NavBar() {
     return (
-        <nav className="NavBar flex justify-between p-6 mb-6">
+        <nav className="NavBar flex justify-between px-10 py-6 mb-6">
             <div>yuggy</div>
             <div>
                 <ul className="flex">

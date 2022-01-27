@@ -7,16 +7,6 @@ import React, { useEffect, useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 
 function App() {
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    fetch("https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=blue-eyes")
-      .then(response => response.json())
-      .then(({ data: cards }) => {
-        setCards(cards);
-      });
-  }, []);
-
   return (
     <div className="App">
       <NavBar />
