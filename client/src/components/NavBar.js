@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const NavBar = (props) => {
     return (
-        <nav className="NavBar flex justify-between p-6 mb-6 bg-slate-500">
+        <nav className="NavBar flex justify-between p-6 mb-6">
             <div>yuggy</div>
             <div>
                 <ul className="flex">

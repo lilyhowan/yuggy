@@ -7,7 +7,7 @@ function App() {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php?name=Baby%20Dragon|Time%20Wizard')
+    fetch("https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=blue-eyes")
       .then(response => response.json())
       .then(({ data: cards }) => {
         setCards(cards);
@@ -15,11 +15,11 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App bg-black text-white">
       <NavBar />
-      <div id="deck-wrapper" className="flex flex-wrap justify-center gap-6">
+      <div id="deck-wrapper" className="flex flex-wrap justify-between gap-5">
         {cards.map(card => (
-          <Card name={card.name} type={card.type} url={card.card_images[0].image_url} owned="0" ran="0" />
+          <Card name={card.name} type={card.type} url={card.card_images[0].image_url} atk={card.atk} def={card.def} owned="0" ran="0" key={card.name} />
         ))}
       </div>
     </div>
