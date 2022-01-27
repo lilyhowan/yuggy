@@ -7,8 +7,8 @@ const NavBar = (props) => {
             <div>yuggy</div>
             <div>
                 <ul className="flex">
-                    <li className="mr-6">test1</li>
-                    <li>test2</li>
+                    <li className="mr-6"><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/search">Search</NavLink></li>
                 </ul>
             </div>
         </nav>
