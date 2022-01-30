@@ -56,7 +56,7 @@ function Search() {
   }, [searchQuery, typeQuery, archetypeQuery]);
 
   return (
-    <div className="Search container mx-auto w-4/5">
+    <div className="Search container mx-auto w-4/5 flex flex-col gap-6">
       <div className="flex gap-4">
         <div id="filter-search" className="flex flex-col gap-2">
           <label className="font-medium">Search</label>
@@ -99,7 +99,7 @@ function Search() {
           </select>
         </div>
       </div>
-      <div className="flex flex-wrap justify-between gap-5">
+      <div id="cardGrid" className="grid grid-cols-[repeat(auto-fill,_minmax(15rem,_auto))] gap-5">
         {cards &&
           cards.map((card) => (
             <Card

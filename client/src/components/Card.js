@@ -46,12 +46,12 @@ const Card = (props) => {
     purple: "#BC5A84",
     white: "#CCCCCC",
     gray: "#C0C0C0",
-    black: "#000000"
+    black: "#121212"
   };
 
   return (
     <div
-      className="Card flex flex-col items-start max-w-xs p-4 gap-4 rounded-md"
+      className="Card flex flex-col p-4 gap-4 rounded-md"
       style={{
         background: `linear-gradient(180deg, ${
           TYPE_COLORS[getCardColor(props.type)]
@@ -63,7 +63,7 @@ const Card = (props) => {
         src={props.url}
         alt={props.name}
       />
-      <div className="card-info text-left">
+      <div className="card-info">
         <p className="font-bold">{props.name}</p>
         <ul>
           <li>{props.type}</li>
