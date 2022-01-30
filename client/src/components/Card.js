@@ -51,7 +51,7 @@ const Card = (props) => {
 
   return (
     <div
-      className="Card flex flex-col p-4 gap-4 rounded-md"
+      className="Card flex flex-col p-4 gap-4 rounded-md drop-shadow-md"
       style={{
         background: `linear-gradient(180deg, ${
           TYPE_COLORS[getCardColor(props.type)]
@@ -67,11 +67,6 @@ const Card = (props) => {
         <p className="font-bold">{props.name}</p>
         <ul>
           <li>{props.type}</li>
-          {props.atk && (
-            <li>
-              ATK: {props.atk} / DEF: {props.def}
-            </li>
-          )}
           <li>
             Owned: {props.owned} / Ran: {props.ran}
           </li>
