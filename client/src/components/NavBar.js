@@ -1,15 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const NavBar = (props) => {
+function NavBar() {
     return (
-        <nav className="NavBar flex justify-between p-6 mb-6">
-            <div>yuggy</div>
-            <div>
+        <nav className="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box">
+            <div className="px-2 mx-2 navbar-start">yuggy</div>
+            <div className="hidden px-2 mx-2 navbar-center lg:flex">
                 <ul className="flex">
-                    <li className="mr-6">test1</li>
-                    <li>test2</li>
+                    <li className="mr-6"><NavLink to="/">Home</NavLink></li>
+                    <li><NavLink to="/search">Search</NavLink></li>
                 </ul>
+            </div>
+            <div class="px-2 mx-2 navbar-end">
+                navbar-end
             </div>
         </nav>
     );
