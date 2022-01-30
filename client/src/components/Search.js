@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 function Search() {
   // card state
   const [archetypes, setArchetypes] = useState([]);
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState(null);
 
   // query state
   const [searchQuery, setSearchQuery] = useState("");
@@ -57,8 +57,8 @@ function Search() {
   }, [searchQuery, typeQuery, archetypeQuery]);
 
   return (
-    <div className="Search container mx-auto w-4/5 flex flex-col gap-6">
-      <div className="flex gap-4">
+    <div className="Search container mx-auto w-4/5 flex flex-col gap-6 text-center">
+      <div className="flex justify-center gap-4">
         <div id="filter-search" className="form-control">
           <label className="label">Search</label>
           <input
@@ -100,7 +100,7 @@ function Search() {
           </select>
         </div>
       </div>
-      <CardGrid cards={cards} />
+      {cards ? <CardGrid cards={cards} /> : "No Results"}
     </div>
   );
 }

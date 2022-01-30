@@ -1,0 +1,10 @@
+.card-btn {
+    display: none;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.Card:hover .card-btn {
+    display: block;
+}
