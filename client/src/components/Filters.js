@@ -2,6 +2,19 @@ import React, { useEffect, useState } from "react";
 import cardData from "../assets/cardData.json";
 
 function Filters(props) {
+  const [archetypes, setArchetypes] = useState([]);
+
+  // get card archetypes for select dropdown
+  // TO-DO: add caching
+  useEffect(() => {
+    fetch("https://db.ygoprodeck.com/api/v7/archetypes.php")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Fetching archetypes");
+        setArchetypes(data.map((value) => value.archetype_name));
+      });
+  }, []);
+
   return (
     <div className="Filters flex justify-center gap-4">
       <div id="filter-search" className="form-control">
@@ -30,6 +43,24 @@ function Filters(props) {
           ))}
         </select>
       </div>
+      {/* this is called "race" in the API, but is officially known as monster/card type (depending on the card's type) */}
+      <div id="filter-race" className="form-control">
+        <label className="label">Monster/Card Type</label>
+        <select
+          name="race"
+          onChange={props.onChange}
+          className="select select-bordered"
+        >
+          <option value="" selected>
+            Any
+          </option>
+          {cardData.cardRaces.map((race) => (
+            <option key={race} value={race}>
+              {race}
+            </option>
+          ))}
+        </select>
+      </div>
       <div id="filter-archetype" className="form-control">
         <label className="label">Archetype</label>
         <select
@@ -40,7 +71,7 @@ function Filters(props) {
           <option value="" selected>
             Any
           </option>
-          {props.archetypes.map((archetype) => (
+          {archetypes.map((archetype) => (
             <option key={archetype} value={archetype}>
               {archetype}
             </option>

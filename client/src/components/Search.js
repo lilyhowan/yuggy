@@ -3,28 +3,17 @@ import Filters from "./Filters";
 import React, { useEffect, useState } from "react";
 
 function Search() {
-  const [archetypes, setArchetypes] = useState([]);
   const [cards, setCards] = useState(null);
   const [query, setQuery] = useState({
-    "name": "",
-    "type": "",
-    "archetype": ""
+    name: "",
+    type: "",
+    race: "",
+    archetype: ""
   });
 
   const handleQueryChange = (e) => {
-    setQuery(query => ({...query, [e.target.name]: e.target.value}));
+    setQuery((query) => ({ ...query, [e.target.name]: e.target.value }));
   };
-
-  // get card archetypes for select dropdown
-  // TO-DO: add caching
-  useEffect(() => {
-    fetch("https://db.ygoprodeck.com/api/v7/archetypes.php")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Fetching archetypes")
-        setArchetypes(data.map((value) => value.archetype_name));
-      });
-  }, []);
 
   // fetch cards from API using query parameters
   useEffect(() => {
@@ -37,6 +26,10 @@ function Search() {
 
       if (query.type !== "") {
         queryParameters.push(`type=${query.type}`);
+      }
+
+      if (query.race !== "") {
+        queryParameters.push(`race=${query.race}`);
       }
 
       if (query.archetype !== "") {
@@ -62,7 +55,7 @@ function Search() {
 
   return (
     <div className="Search container mx-auto w-4/5 flex flex-col gap-6 text-center">
-      <Filters onChange={handleQueryChange} archetypes={archetypes} />
+      <Filters onChange={handleQueryChange} />
       {cards ? <CardGrid cards={cards} /> : "No Results"}
     </div>
   );
