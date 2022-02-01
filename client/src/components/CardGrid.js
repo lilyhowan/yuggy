@@ -3,7 +3,7 @@ import Card from "./Card";
 
 function CardGrid(props) {
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,_minmax(15rem,_auto))] gap-5 text-left">
+    <div className="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] xl:grid-cols-[repeat(auto-fill,_240px)] gap-5 justify-center text-left">
       {props.cards.map((card) => (
         <Card
           name={card.name}

@@ -1,5 +1,5 @@
 import CardGrid from "./CardGrid";
-import Filters from "./Filters";
+import Filters from "./Filters/Filters";
 import React, { useEffect, useState } from "react";
 
 function Search() {
