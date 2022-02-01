@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import cardData from "../assets/cardData.json";
+import AdvancedFilters from "./AdvancedFilters";
 
 function Filters(props) {
   const [archetypes, setArchetypes] = useState([]);
+  const [advanced, setAdvanced] = useState(false);
 
   // get card archetypes for select dropdown
   // TO-DO: add caching
@@ -10,13 +12,14 @@ function Filters(props) {
     fetch("https://db.ygoprodeck.com/api/v7/archetypes.php")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Fetching archetypes");
-        setArchetypes(data.map((value) => value.archetype_name));
+        /*console.log("Fetching archetypes");
+        setArchetypes(data.map((value) => value.archetype_name));*/
+        setArchetypes(["placeholder"]);
       });
   }, []);
 
   return (
-    <div className="Filters flex justify-center gap-4">
+    <div className="Filters flex justify-center items-end gap-4">
       <div id="filter-search" className="form-control">
         <label className="label">Search</label>
         <input
@@ -77,6 +80,10 @@ function Filters(props) {
             </option>
           ))}
         </select>
+      </div>
+      <div className="advanced-filters relative">
+        <button className="btn" onClick={() => setAdvanced(!advanced)}>Advanced Filters</button>
+        {advanced && <AdvancedFilters onChange={props.onChange} />}
       </div>
     </div>
   );

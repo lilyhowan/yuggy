@@ -8,7 +8,9 @@ function Search() {
     name: "",
     type: "",
     race: "",
-    archetype: ""
+    archetype: "",
+    attribute: "",
+    banlist: "",
   });
 
   const handleQueryChange = (e) => {
@@ -34,6 +36,14 @@ function Search() {
 
       if (query.archetype !== "") {
         queryParameters.push(`archetype=${query.archetype}`);
+      }
+
+      if (query.attribute !== "") {
+        queryParameters.push(`attribute=${query.attribute}`);
+      }
+
+      if (query.banlist !== "") {
+        queryParameters.push(`banlist=${query.banlist}`);
       }
 
       let searchString = (
