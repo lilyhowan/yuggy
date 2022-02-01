@@ -1,6 +1,18 @@
-const Card = (props) => {
-  // effect monsters that are also another monster type (e.g. synchro/effect) use the colour of the other type
-  // pendulum monsters use a vertical gradient that fades from the other monster type's card color to spell type green
+function Card(props) {
+  const TYPE_COLORS = {
+    NOT_FOUND: "#FFFFFF",
+    orange: "#FF8B53",
+    yellow: "#FDE68A",
+    green: "#1D9E74",
+    blue: "#01AAF5",
+    lightBlue: "#9DB5CC",
+    darkBlue: "#00008B",
+    violet: "#A086B7",
+    purple: "#BC5A84",
+    white: "#CCCCCC",
+    gray: "#C0C0C0",
+    black: "#121212"
+  };
 
   const getCardColor = (type) => {
     if (type.includes("Pendulum") || type.includes("Spell")) {
@@ -20,7 +32,7 @@ const Card = (props) => {
     } else if (type.includes("XYZ")) {
       return "black";
     } else if (type.includes("Skill")) {
-        return "blue";
+      return "blue";
     } else if (
       type.includes("Effect") ||
       type.includes("Gemini") ||
@@ -32,21 +44,6 @@ const Card = (props) => {
     } else {
       return "NOT_FOUND";
     }
-  };
-
-  const TYPE_COLORS = {
-    NOT_FOUND: "#FFFFFF",
-    orange: "#FF8B53",
-    yellow: "#FDE68A",
-    green: "#1D9E74",
-    blue: "#01AAF5",
-    lightBlue: "#9DB5CC",
-    darkBlue: "#00008B",
-    violet: "#A086B7",
-    purple: "#BC5A84",
-    white: "#CCCCCC",
-    gray: "#C0C0C0",
-    black: "#121212"
   };
 
   return (
@@ -67,11 +64,9 @@ const Card = (props) => {
         <p className="font-bold">{props.name}</p>
         <ul>
           <li>{props.type}</li>
-          <li>
-            Owned: {props.owned} / Ran: {props.ran}
-          </li>
         </ul>
       </div>
+      <button className="btn btn-circle btn-sm card-btn">X</button>
     </div>
   );
 };
