@@ -23,7 +23,7 @@ function Filters(props) {
       <div id="filter-search" className="form-control">
         <label className="label">Search</label>
         <input
-          name="name"
+          name="fname"
           type="search"
           onChange={props.onChange}
           className="input input-bordered"

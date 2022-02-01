@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 function Search() {
   const [cards, setCards] = useState(null);
   const [query, setQuery] = useState({
-    name: "",
+    fname: "",
     type: "",
     race: "",
     archetype: "",
@@ -20,31 +20,7 @@ function Search() {
   // fetch cards from API using query parameters
   useEffect(() => {
     const timeOut = setTimeout(() => {
-      let queryParameters = [];
-
-      if (query.name !== "") {
-        queryParameters.push(`fname=${query.name}`);
-      }
-
-      if (query.type !== "") {
-        queryParameters.push(`type=${query.type}`);
-      }
-
-      if (query.race !== "") {
-        queryParameters.push(`race=${query.race}`);
-      }
-
-      if (query.archetype !== "") {
-        queryParameters.push(`archetype=${query.archetype}`);
-      }
-
-      if (query.attribute !== "") {
-        queryParameters.push(`attribute=${query.attribute}`);
-      }
-
-      if (query.banlist !== "") {
-        queryParameters.push(`banlist=${query.banlist}`);
-      }
+      let queryParameters = Object.keys(query).filter(key => query[key] !== "").map(key => ( `${key}=${query[key]}`));
 
       let searchString = (
         "https://db.ygoprodeck.com/api/v7/cardinfo.php?" +
