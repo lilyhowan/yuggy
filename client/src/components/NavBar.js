@@ -11,7 +11,7 @@ function NavBar() {
                     <li><NavLink to="/search">Search</NavLink></li>
                 </ul>
             </div>
-            <div class="px-2 mx-2 navbar-end">
+            <div className="px-2 mx-2 navbar-end">
                 navbar-end
             </div>
         </nav>

@@ -1,4 +1,4 @@
-const Card = (props) => {
+function Card(props) {
   const TYPE_COLORS = {
     NOT_FOUND: "#FFFFFF",
     orange: "#FF8B53",

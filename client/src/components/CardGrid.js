@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-const CardGrid = (props) => {
+function CardGrid(props) {
   return (
     <div className="grid grid-cols-[repeat(auto-fill,_minmax(15rem,_auto))] gap-5 text-left">
       {props.cards.map((card) => (

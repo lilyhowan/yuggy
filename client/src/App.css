@@ -5,6 +5,7 @@
     bottom: 10px;
 }
 
+/* TO-DO */
 .Card:hover .card-btn {
-    display: block;
+    display: none;
 }
