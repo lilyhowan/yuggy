@@ -12,7 +12,7 @@ function NavBar() {
                 </ul>
             </div>
             <div className="px-2 mx-2 navbar-end">
-                navbar-end
+                Sign Up
             </div>
         </nav>
     );
