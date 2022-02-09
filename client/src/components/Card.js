@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 function Card(props) {
   const TYPE_COLORS = {
     NOT_FOUND: "#FFFFFF",
@@ -47,7 +49,12 @@ function Card(props) {
   };
 
   return (
-    <div
+    <motion.div
+      variants={props.variants}
+      initial="hidden"
+      animate="visible"
+      exit="visible"
+      custom={props.custom}
       className="Card flex flex-col p-4 gap-4 rounded-md drop-shadow-md"
       style={{
         background: `linear-gradient(180deg, ${
@@ -67,8 +74,8 @@ function Card(props) {
         </ul>
       </div>
       <button className="btn btn-circle btn-sm card-btn">X</button>
-    </div>
+    </motion.div>
   );
-};
+}
 
 export default Card;
