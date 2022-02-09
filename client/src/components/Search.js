@@ -2,10 +2,12 @@ import CardGrid from "./CardGrid";
 import Filters from "./Filters/Filters";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import Spinner from "./Spinner";
 
 function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [cards, setCards] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleQueryChange = (e) => {
     // if the query has a value, add it to the existing parameters
@@ -38,10 +40,12 @@ function Search() {
 
       if (searchString !== "https://db.ygoprodeck.com/api/v7/cardinfo.php?") {
         console.log(`Searching... (${searchString})`);
+        setLoading(true);
         fetch(searchString)
           .then((response) => response.json())
           .then(({ data: cards }) => {
             setCards(cards);
+            setLoading(false);
           });
       }
     }, 1000);
@@ -51,7 +55,7 @@ function Search() {
   return (
     <div className="Search container mx-auto w-4/5 flex flex-col gap-6 text-center">
       <Filters onChange={handleQueryChange} searchParams={searchParams} />
-      {cards ? <CardGrid cards={cards} /> : "No Results"}
+      {loading ? <div className="spinner-wrapper self-center"><Spinner  /></div> : cards ? <CardGrid cards={cards} /> : "No Results"}
     </div>
   );
 }

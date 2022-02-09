@@ -7,14 +7,14 @@ function NavBar() {
       <div className="px-2 mx-2 navbar-start">
         <Link to="/">Yuggy</Link>
       </div>
-      <div className="hidden px-2 mx-2 navbar-center lg:flex">
+      {/*<div className="hidden px-2 mx-2 navbar-center lg:flex">
         <ul className="flex">
-          <li>
-            <NavLink to="/search">Search</NavLink>
-          </li>
+          <li>Sign Up</li>
         </ul>
+  </div>*/}
+      <div className="px-2 mx-2 navbar-end">
+        <NavLink to="/search">Search</NavLink>
       </div>
-      <div className="px-2 mx-2 navbar-end">Sign Up</div>
     </nav>
   );
 }

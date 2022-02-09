@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function Home() {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   return (
-    <div className="container mx-auto flex flex-wrap-reverse gap-0 justify-center items-center md:flex-nowrap md:gap-6 prose prose-h1:mb-0 max-w-none">
-      <div id="home-left-wrapper" className="max-w-sm">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, y: -10 }}
+      transition={{ duration: 1 }}
+      className="container mx-auto max-w-none p-6 flex flex-wrap-reverse gap-0 justify-center items-center md:flex-nowrap md:gap-6 prose prose-h1:mb-0"
+    >
+      <div id="home-left-wrapper" className="max-w-md">
         <h1>Search, filter and find</h1>
         <p>
           Yuggy is a Yu-Gi-Oh! TCG card search web app. All information is taken
@@ -22,8 +28,8 @@ function Home() {
           .
         </p>
         <div className="form-control">
-          <label class="label">
-            <span class="label-text">Search for a card</span>
+          <label className="label">
+            <span className="label-text">Search for a card</span>
           </label>
           <div className="relative">
             <input
@@ -48,7 +54,7 @@ function Home() {
       <div id="home-right-wrapper">
         <img src="/blue-eyes-white-dragon.png" alt="Blue-eyes White Dragon" />
       </div>
-    </div>
+    </motion.div>
   );
 }
 
