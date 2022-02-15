@@ -8,10 +8,9 @@ function Filters(props) {
 
   // get card archetypes for select dropdown
   useEffect(() => {
-    fetch("https://db.ygoprodeck.com/api/v7/archetypes.php")
+      fetch("/archetypes")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Fetching archetypes");
         setArchetypes(data.map((value) => value.archetype_name));
       });
   }, []);
