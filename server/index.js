@@ -1,23 +1,23 @@
-const axios = require("axios");
-const path = require('path');
-const express = require("express");
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const routes = require('./routes/api');
+require('dotenv').config();
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-app.use(express.static(path.resolve(__dirname, '../client/build')));
+mongoose
+  .connect(process.env.DB, { useNewUrlParser: true })
+  .then(() => console.log("Database connected successfully"))
+  .catch((err) => console.log(err));
 
-app.get("/archetypes", (req, res) => {
-  return axios
-    .get("https://db.ygoprodeck.com/api/v7/archetypes.php")
-    .then((response) => res.json(response.data))
-    .catch((err) => console.log(err));
-});
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-  });
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use('/api', routes);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

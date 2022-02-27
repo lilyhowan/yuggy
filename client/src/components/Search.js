@@ -55,7 +55,15 @@ function Search() {
   return (
     <div className="Search container mx-auto w-4/5 flex flex-col gap-6 text-center">
       <Filters onChange={handleQueryChange} searchParams={searchParams} />
-      {loading ? <div className="spinner-wrapper self-center"><Spinner  /></div> : cards ? <CardGrid cards={cards} /> : "No Results"}
+      {loading ? (
+        <div className="spinner-wrapper self-center">
+          <Spinner />
+        </div>
+      ) : cards ? (
+        <CardGrid cards={cards} />
+      ) : (
+        "No Results"
+      )}
     </div>
   );
 }

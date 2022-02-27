@@ -22,9 +22,9 @@ function Filters(props) {
           <span className="label-text">Search</span>
         </label>
         <input
-          name="fname"
+          name="name"
           type="search"
-          value={props.searchParams.get("fname") || ""}
+          value={props.searchParams.get("name") || ""}
           onChange={props.onChange}
           className="input input-bordered"
         />
