@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 
 function NavBar() {
   return (
-    <nav className="navbar mb-2 shadow-lg bg-neutral text-neutral-content">
+    <nav className="navbar mb-10 shadow-lg bg-neutral text-neutral-content">
       <div className="px-2 mx-2 navbar-start">
         <Link to="/">Yuggy</Link>
       </div>

@@ -8,7 +8,7 @@ function Filters(props) {
 
   // get card archetypes for select dropdown
   useEffect(() => {
-      fetch("/archetypes")
+      fetch("/api/archetypes")
       .then((response) => response.json())
       .then((data) => {
         setArchetypes(data.map((value) => value.archetype_name));

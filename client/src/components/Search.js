@@ -1,8 +1,8 @@
 import CardGrid from "./CardGrid";
 import Filters from "./Filters/Filters";
+import Spinner from "./Spinner";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import Spinner from "./Spinner";
 
 function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -53,9 +53,17 @@ function Search() {
   }, [searchParams]);
 
   return (
-    <div className="Search container mx-auto w-4/5 flex flex-col gap-6 text-center">
+    <div className="container mx-auto w-4/5 flex flex-col gap-6 text-center">
       <Filters onChange={handleQueryChange} searchParams={searchParams} />
-      {loading ? <div className="spinner-wrapper self-center"><Spinner  /></div> : cards ? <CardGrid cards={cards} /> : "No Results"}
+      {loading ? (
+        <div className="spinner-wrapper self-center">
+          <Spinner />
+        </div>
+      ) : cards ? (
+        <CardGrid cards={cards} />
+      ) : (
+        "No Results"
+      )}
     </div>
   );
 }

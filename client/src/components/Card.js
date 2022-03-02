@@ -59,21 +59,23 @@ function Card(props) {
       style={{
         background: `linear-gradient(180deg, ${
           TYPE_COLORS[getCardColor(props.type)]
-        } 45%, #2B292C 45%)`
+        } 45%, #262626 45%)`
       }}
     >
-      <img
-        className="rounded container mx-auto"
-        src={props.url}
-        alt={props.name}
-      />
-      <div className="card-info">
-        <p className="font-bold">{props.name}</p>
-        <ul>
-          <li>{props.type}</li>
-        </ul>
-      </div>
-      <button className="btn btn-circle btn-sm card-btn">X</button>
+      <a href={`/card/${props.id}`}>
+        <img
+          src={props.url}
+          alt={props.name}
+          className="rounded container mx-auto mb-2"
+        />
+        <div className="card-info">
+          <p className="font-bold">{props.name}</p>
+          <ul>
+            <li>{props.type}</li>
+          </ul>
+        </div>
+        <button className="btn btn-circle btn-sm card-btn">X</button>
+      </a>
     </motion.div>
   );
 }
