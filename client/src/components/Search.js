@@ -53,7 +53,7 @@ function Search() {
   }, [searchParams]);
 
   return (
-    <div className="Search container mx-auto w-4/5 flex flex-col gap-6 text-center">
+    <div className="container mx-auto w-4/5 flex flex-col gap-6 text-center">
       <Filters onChange={handleQueryChange} searchParams={searchParams} />
       {loading ? (
         <div className="spinner-wrapper self-center">

@@ -35,7 +35,7 @@ function CardPage() {
   }, [id]);
 
   return (
-    <div className="container mx-auto w-4/5">
+    <div className="container mx-auto w-4/5 flex flex-col">
       {loading ? (
         <div className="spinner-wrapper self-center">
           <Spinner />
@@ -63,7 +63,7 @@ function CardPage() {
               src={card.card_images[0]["image_url"]}
               alt={card.name}
               onClick={() => setShowModal(true)}
-              className="cursor-pointer"
+              className="cursor-pointer rounded-md"
             />
           </div>
           <div id="info-wrapper" className="basis-1/2">
@@ -124,9 +124,7 @@ function CardPage() {
                 <tbody>
                   {Object.keys(card.card_prices[0]).map((vendor) => (
                     <tr key={vendor}>
-                      <td>
-                        {cardVendors[vendor]}
-                      </td>
+                      <td>{cardVendors[vendor]}</td>
                       <td className="text-right">
                         {vendor === "cardmarket_price"
                           ? "€" + card.card_prices[0][vendor]
@@ -144,14 +142,10 @@ function CardPage() {
               <h4>Sets</h4>
               <table>
                 <tbody>
-                  {card.card_sets.map((set) => (
-                    <tr key={set.set_code}>
-                      <td>
-                        {set.set_name}
-                      </td>
-                      <td className="text-right">
-                        {set.set_rarity_code}
-                      </td>
+                  {card.card_sets.map((set, i) => (
+                    <tr key={i}>
+                      <td>{set.set_name}</td>
+                      <td className="text-right">{set.set_rarity_code}</td>
                     </tr>
                   ))}
                 </tbody>
