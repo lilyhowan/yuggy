@@ -6,6 +6,7 @@ function CardPage() {
   let { id } = useParams();
   let [card, setCard] = useState();
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const cardVendors = {
     cardmarket_price: "Cardmarket",
@@ -34,20 +35,41 @@ function CardPage() {
   }, [id]);
 
   return (
-    <div className="container mx-auto  w-4/5">
+    <div className="container mx-auto w-4/5">
       {loading ? (
         <div className="spinner-wrapper self-center">
           <Spinner />
         </div>
       ) : card.name ? (
-        <div className="flex">
-          <div id="img-wrapper" className="">
-            <img src={card.card_images[0]["image_url"]} alt={card.name} />
+        <div className="flex flex-col items-center md:flex-row md:items-start">
+          {showModal && (
+            <div
+              id="img-modal"
+              className="fixed w-full h-full left-0 top-0 bg-base-300/70 cursor-pointer"
+              onClick={() => setShowModal(false)}
+            >
+              <img
+                src={card.card_images[0]["image_url"]}
+                alt={card.name}
+                className="mx-auto mt-20"
+              />
+            </div>
+          )}
+          <div
+            id="img-wrapper"
+            className="min-w-[200px] max-w-[300px] basis-1/4"
+          >
+            <img
+              src={card.card_images[0]["image_url"]}
+              alt={card.name}
+              onClick={() => setShowModal(true)}
+              className="cursor-pointer"
+            />
           </div>
-          <div id="info-wrapper" className="">
-            <div className="flex justify-between items-center bg-base-200 m-2 mt-0 p-4 rounded-lg prose prose-h2:mb-0 max-w-full">
+          <div id="info-wrapper" className="basis-1/2">
+            <div className="flex justify-between items-center bg-base-200 m-2 mt-0 p-4 rounded-lg prose prose-h2:mb-0 prose-h3:mb-0 max-w-full">
               <h2>{card.name}</h2>
-              <p>{card.level}</p>
+              <h3>{card.level}</h3>
             </div>
             <div className="flex justify-between bg-base-200 m-2 p-4 rounded-lg">
               <p>
@@ -92,25 +114,49 @@ function CardPage() {
               </p>
             )}
           </div>
-          <div
-            id="price-wrapper"
-            className="bg-base-200 m-2 mt-0 p-4 rounded-lg prose prose-h2:mb-0 prose-ul:list-none prose-ul:p-0 prose-li:p-0 max-w-full h-fit basis-1/5"
-          >
-            <h3>Card Prices</h3>
-            <table>
-              <tbody>
-              {Object.keys(card.card_prices[0]).map((vendor) => (
-                <tr key={vendor}>
-                  <td><b>{cardVendors[vendor]}</b></td>
-                  <td>
-                    {vendor === "cardmarket_price"
-                      ? "€" + card.card_prices[0][vendor]
-                      : "$" + card.card_prices[0][vendor]}
-                  </td>
-                </tr>
-              ))}
-              </tbody>
-            </table>
+          <div id="extra-wrapper" className="basis-1/4">
+            <div
+              id="price-wrapper"
+              className="bg-base-200 m-2 mt-0 p-4 rounded-lg prose prose-h2:mb-0 prose-td:p-1 max-w-full h-fit"
+            >
+              <h4>Card Prices</h4>
+              <table>
+                <tbody>
+                  {Object.keys(card.card_prices[0]).map((vendor) => (
+                    <tr key={vendor}>
+                      <td>
+                        {cardVendors[vendor]}
+                      </td>
+                      <td className="text-right">
+                        {vendor === "cardmarket_price"
+                          ? "€" + card.card_prices[0][vendor]
+                          : "$" + card.card_prices[0][vendor]}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div
+              id="set-wrapper"
+              className="bg-base-200 m-2 mt-0 p-4 rounded-lg prose prose-h2:mb-0 prose-td:p-1 max-w-full h-fit"
+            >
+              <h4>Sets</h4>
+              <table>
+                <tbody>
+                  {card.card_sets.map((set) => (
+                    <tr key={set.set_code}>
+                      <td>
+                        {set.set_name}
+                      </td>
+                      <td className="text-right">
+                        {set.set_rarity_code}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       ) : (
