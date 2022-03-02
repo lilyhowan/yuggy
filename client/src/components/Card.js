@@ -68,7 +68,7 @@ function Card(props) {
         alt={props.name}
       />
       <div className="card-info">
-        <p className="font-bold"><a href={`/card/${props.id}`}>{props.name}</a></p>
+        <a className="font-bold hover:underline" href={`/card/${props.id}`}>{props.name}</a>
         <ul>
           <li>{props.type}</li>
         </ul>
