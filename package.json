@@ -2,9 +2,9 @@
   "name": "yuggy",
   "version": "1.0.0",
   "description": "Yu-Gi-Oh! TCG deck tracker",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node server.js",
     "build": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
