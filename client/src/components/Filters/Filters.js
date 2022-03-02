@@ -8,7 +8,7 @@ function Filters(props) {
 
   // get card archetypes for select dropdown
   useEffect(() => {
-      fetch("/archetypes")
+      fetch("/api/archetypes")
       .then((response) => response.json())
       .then((data) => {
         setArchetypes(data.map((value) => value.archetype_name));
@@ -22,9 +22,9 @@ function Filters(props) {
           <span className="label-text">Search</span>
         </label>
         <input
-          name="name"
+          name="fname"
           type="search"
-          value={props.searchParams.get("name") || ""}
+          value={props.searchParams.get("fname") || ""}
           onChange={props.onChange}
           className="input input-bordered"
         />

@@ -23,6 +23,7 @@ function CardGrid(props) {
     <div className="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] xl:grid-cols-[repeat(auto-fill,_240px)] gap-5 justify-center text-left" key="card-grid">
         {props.cards.map((card, i) => (
           <Card
+            id={card.id}
             name={card.name}
             type={card.type}
             url={card.card_images[0].image_url}

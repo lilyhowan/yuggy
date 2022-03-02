@@ -1,8 +1,8 @@
 import CardGrid from "./CardGrid";
 import Filters from "./Filters/Filters";
+import Spinner from "./Spinner";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import Spinner from "./Spinner";
 
 function Search() {
   const [searchParams, setSearchParams] = useSearchParams();
