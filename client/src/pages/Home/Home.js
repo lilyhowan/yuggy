@@ -55,7 +55,7 @@ function Home() {
         </div>
       </div>
       <div id="home-right-wrapper">
-        <img src="/scapegoat.gif" alt="Scapegoat" />
+        <img src="/images/scapegoat.gif" alt="Scapegoat" />
       </div>
     </motion.div>
   );

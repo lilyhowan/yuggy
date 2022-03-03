@@ -1,6 +1,6 @@
-import CardGrid from "./CardGrid";
-import Filters from "./Filters/Filters";
-import Spinner from "./Spinner";
+import CardGrid from "../../components/Cards/CardGrid";
+import Filters from "../../components/Filters/Filters";
+import Spinner from "../../components/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 

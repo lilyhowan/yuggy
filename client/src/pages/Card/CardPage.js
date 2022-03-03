@@ -1,4 +1,4 @@
-import Spinner from "./Spinner";
+import Spinner from "../../components/Spinner/Spinner";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -77,7 +77,7 @@ function CardPage() {
               <div className="flex items-center">
                 {card.attribute && (
                   <img
-                    src={`/attributes/${card.attribute}.png`}
+                    src={`/images/attributes/${card.attribute}.png`}
                     alt={card.attribute}
                     className="inline max-w-[20px] mr-2"
                   />
@@ -85,8 +85,8 @@ function CardPage() {
                 <img
                   src={
                     card.race.toLowerCase() in typeExceptions
-                      ? `/races/${typeExceptions[card.race.toLowerCase()]}.png`
-                      : `/races/${card.race.toLowerCase()}.png`
+                      ? `/images/races/${typeExceptions[card.race.toLowerCase()]}.png`
+                      : `/images/races/${card.race.toLowerCase()}.png`
                   }
                   alt={card.race}
                   className="inline"

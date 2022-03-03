@@ -74,7 +74,6 @@ function Card(props) {
             <li>{props.type}</li>
           </ul>
         </div>
-        <button className="btn btn-circle btn-sm card-btn">X</button>
       </a>
     </motion.div>
   );
