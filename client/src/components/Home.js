@@ -16,8 +16,8 @@ function Home() {
       <div id="home-left-wrapper" className="max-w-md">
         <h1>Search, filter and find</h1>
         <p>
-          Yuggy is a Yu-Gi-Oh! TCG card search web app. All information is taken
-          from the{" "}
+          Yuggy is a Yu-Gi-Oh! TCG card search web app which allows you to
+          search and view cards. All information is fetched from the{" "}
           <a
             href="https://db.ygoprodeck.com/api-guide/"
             target="_blank"
@@ -31,7 +31,14 @@ function Home() {
           <label className="label">
             <span className="label-text">Search for a card</span>
           </label>
-          <div className="relative">
+          <form
+            className="relative"
+            onSubmit={() =>
+              query.trim() !== ""
+                ? navigate(`/search?fname=${query}`)
+                : navigate("/search")
+            }
+          >
             <input
               type="text"
               placeholder="Enter a card name"
@@ -39,20 +46,16 @@ function Home() {
               className="w-full pr-16 input input-primary input-bordered"
             />
             <button
+              type="submit"
               className="absolute top-0 right-0 rounded-l-none btn btn-primary"
-              onClick={() =>
-                query.trim() !== ""
-                  ? navigate(`/search?fname=${query}`)
-                  : navigate("/search")
-              }
             >
               GO
             </button>
-          </div>
+          </form>
         </div>
       </div>
       <div id="home-right-wrapper">
-        <img src="/blue-eyes-white-dragon.png" alt="Blue-eyes White Dragon" />
+        <img src="/scapegoat.gif" alt="Scapegoat" />
       </div>
     </motion.div>
   );
