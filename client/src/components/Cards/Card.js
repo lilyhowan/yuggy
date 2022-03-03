@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 
 function Card(props) {
+  const [loading, setLoading] = useState(true);
+
   const TYPE_COLORS = {
     NOT_FOUND: "#FFFFFF",
     orange: "#FF8B53",
@@ -57,6 +60,7 @@ function Card(props) {
       custom={props.custom}
       className="Card flex flex-col p-4 gap-4 rounded-md drop-shadow-md"
       style={{
+        display: loading ? "none" : "block",
         background: `linear-gradient(180deg, ${
           TYPE_COLORS[getCardColor(props.type)]
         } 45%, #262626 45%)`
@@ -67,6 +71,7 @@ function Card(props) {
           src={props.url}
           alt={props.name}
           className="rounded container mx-auto mb-2"
+          onLoad={() => setLoading(false)}
         />
         <div className="card-info">
           <p className="font-bold">{props.name}</p>
