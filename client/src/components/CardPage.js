@@ -28,7 +28,6 @@ function CardPage() {
     fetch(`/api/card/${id}`, { method: "PUT" })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setCard(data);
         setLoading(false);
       });
@@ -41,7 +40,7 @@ function CardPage() {
           <Spinner />
         </div>
       ) : card.name ? (
-        <div className="flex flex-col items-center md:flex-row md:items-start">
+        <div className="flex flex-col items-center md:flex-row md:items-start gap-2">
           {showModal && (
             <div
               id="img-modal"
@@ -57,7 +56,7 @@ function CardPage() {
           )}
           <div
             id="img-wrapper"
-            className="min-w-[200px] max-w-[300px] basis-1/4"
+            className="m-2 mt-0 min-w-[200px] max-w-[300px] basis-1/4"
           >
             <img
               src={card.card_images[0]["image_url"]}
@@ -66,7 +65,7 @@ function CardPage() {
               className="cursor-pointer rounded-md"
             />
           </div>
-          <div id="info-wrapper" className="basis-1/2">
+          <div id="info-wrapper" className="basis-1/2 w-full">
             <div className="flex justify-between items-center bg-base-200 m-2 mt-0 p-4 rounded-lg prose prose-h2:mb-0 prose-h3:mb-0 max-w-full">
               <h2>{card.name}</h2>
               <h3>{card.level}</h3>
@@ -137,7 +136,7 @@ function CardPage() {
             </div>
             <div
               id="set-wrapper"
-              className="bg-base-200 m-2 mt-0 p-4 rounded-lg prose prose-h2:mb-0 prose-td:p-1 max-w-full h-fit"
+              className="bg-base-200 m-2 mt-0 p-4 rounded-lg prose prose-h2:mb-0 prose-td:p-1 max-w-full h-56 overflow-y-scroll"
             >
               <h4>Sets</h4>
               <table>
