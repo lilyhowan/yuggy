@@ -1,35 +1,21 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {}
-  },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
-  daisyui: {
-    themes: [
-      {
-        yuggy: {
-          primary: "#bb86fc",
-          "primary-focus": "#8451c2",
-          "primary-content": "#000000",
-          secondary: "#3700b3",
-          "secondary-focus": "#2e0099",
-          "secondary-content": "#ffffff",
-          accent: "#03dac6",
-          "accent-focus": "#00a895",
-          "accent-content": "#000000",
-          neutral: "#171717",
-          "neutral-focus": "#121212",
-          "neutral-content": "#ffffff",
-          "base-100": "#1c1c1c",
-          "base-200": "#171717",
-          "base-300": "#121212",
-          "base-content": "#ffffff",
-          info: "#2094f3",
-          success: "#009485",
-          warning: "#ff9900",
-          error: "#ff5724"
-        }
+    extend: {
+      colors: {
+        "base-0": "#121212",
+        "base-1": "#1E1E1E",
+        "base-2": "#232323",
+        "base-3": "#252525",
+        "base-4": "#272727",
+        "base-6": "#2C2C2C",
+        "base-8": "#2E2E2E",
+        "base-12": "#333333",
+        "base-16": "#363636",
+        "base-24": "#383838",
+        accent: "#4FB5FF"
       }
-    ]
-  }
+    }
+  },
+  plugins: [require("@tailwindcss/typography")]
 };
