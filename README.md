@@ -3,7 +3,7 @@
 
 Yu-Gi-Oh! TCG card search web app
 
-* Built with Node, Express, MongoDB, React, and TailwindCSS (+ daisyUI)
+* Built with Node, Express, MongoDB, React and TailwindCSS
 * Uses the [YGOPRODECK Yu-Gi-Oh! API](https://db.ygoprodeck.com/api-guide/) for card information
 
 Allows users to filter cards by name, type, archetype, attribute, etc. Cards can be opened individually from the search page to view more information; in order to minimise calls to the API, when a card is opened its details are stored in a MongoDB database and fetched from there for subsequent requests.
