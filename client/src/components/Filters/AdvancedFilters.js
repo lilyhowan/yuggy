@@ -9,7 +9,7 @@ function AdvancedFilters(props) {
         </label>
         <select
           name="attribute"
-          value={props.searchParams.get("attribute") || ""}
+          defaultValue={props.searchParams.get("attribute") || ""}
           onChange={props.onChange}
           className="select select-bordered"
         >
@@ -31,7 +31,7 @@ function AdvancedFilters(props) {
         </label>
         <select
           name="banlist"
-          value={props.searchParams.get("banlist") || ""}
+          defaultValue={props.searchParams.get("banlist") || ""}
           onChange={props.onChange}
           className="select select-bordered"
         >
